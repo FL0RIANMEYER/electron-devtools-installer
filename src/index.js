@@ -23,15 +23,7 @@ const install = (extensionReference, forceDownload = false) => {
     return Promise.all(extensionReference.map(extension => install(extension, forceDownload)));
   }
   let chromeStoreID;
-  if (typeof extensionReference === 'object' && extensionReference.id) {
-    chromeStoreID = extensionReference.id;
-    const electronVersion = process.versions.electron.split('-')[0];
-    if (!semver.satisfies(electronVersion, extensionReference.electron)) {
-      return Promise.reject(
-        new Error(`Version of Electron: ${electronVersion} does not match required range ${extensionReference.electron} for extension ${chromeStoreID}`), // eslint-disable-line
-      );
-    }
-  } else if (typeof extensionReference === 'string') {
+  if (typeof extensionReference === 'string') {
     chromeStoreID = extensionReference;
   } else {
     return Promise.reject(new Error(`Invalid extensionReference passed in: "${extensionReference}"`));
@@ -63,45 +55,34 @@ const install = (extensionReference, forceDownload = false) => {
 export default install;
 export const EMBER_INSPECTOR = {
   id: 'bmdblncegkenkacieihfhpjfppoconhi',
-  electron: '>=1.2.1',
 };
 export const REACT_DEVELOPER_TOOLS = {
   id: 'fmkadmapgofadopljbjfkapdkoienihi',
-  electron: '>=1.2.1',
 };
 export const BACKBONE_DEBUGGER = {
   id: 'bhljhndlimiafopmmhjlgfpnnchjjbhd',
-  electron: '>=1.2.1',
 };
 export const JQUERY_DEBUGGER = {
   id: 'dbhhnnnpaeobfddmlalhnehgclcmjimi',
-  electron: '>=1.2.1',
 };
 export const ANGULARJS_BATARANG = {
   id: 'ighdmehidhipcmcojjgiloacoafjmpfk',
-  electron: '>=1.2.1',
 };
 export const VUEJS_DEVTOOLS = {
   id: 'nhdogjmejiglipccpnnnanhbledajbpd',
-  electron: '>=1.2.1',
 };
 export const REDUX_DEVTOOLS = {
   id: 'lmhkpmbekcpmknklioeibfkpmmfibljd',
-  electron: '>=1.2.1',
 };
 export const REACT_PERF = {
   id: 'hacmcodfllhbnekmghgdlplbdnahmhmm',
-  electron: '>=1.2.6',
 };
 export const CYCLEJS_DEVTOOL = {
   id: 'dfgplfmhhmdekalbpejekgfegkonjpfp',
-  electron: '>=1.2.1',
 };
 export const APOLLO_DEVELOPER_TOOLS = {
   id: 'jdkknkkbebbapilgoeccciglkfbmbnfm',
-  electron: '>=1.2.1',
 };
 export const MOBX_DEVTOOLS = {
   id: 'pfgnfdagidkfgccljigdamigbcnndkod',
-  electron: '>=1.2.1',
 };
